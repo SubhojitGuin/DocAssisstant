@@ -63,7 +63,8 @@ def insert_order_tracking(order_id: int, status: str):
         cursor = cnx.cursor()
 
         # Calling the stored procedure
-        insert_query = ("INSERT INTO order_tracking (order_id, status) VALUES (%s, %s)")
+        insert_query = (
+            "INSERT INTO order_tracking (order_id, status) VALUES (%s, %s)")
         cursor.execute(insert_query, (order_id, status))
 
         # Commit the changes
@@ -104,6 +105,7 @@ def get_order_status(order_id: int):
     else:
         return None
 
+
 def get_next_order_id():
     cursor = cnx.cursor()
 
@@ -122,4 +124,3 @@ def get_next_order_id():
         return 1
     else:
         return result + 1
-
